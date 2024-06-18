@@ -25,6 +25,10 @@ public class SecurityConfig {
                 .formLogin(formLogin -> formLogin.loginPage("/members/login")
                         .defaultSuccessUrl("/").usernameParameter("email").
                         failureUrl("/members/login/error"));
+        //관리자 로그인, 유저로그인 성공,실패 했을때의 메소드 연결
+        http.exceptionHandling(exception->exception.
+                authenticationEntryPoint(new CustomAuthenticationEntryPoint()));
+        //관리자가 아닌사람이 관리자 탭을 쓸때 안되게 하는 메소드를 연결
         return http.build();
     }
     @Bean
@@ -35,5 +39,6 @@ public class SecurityConfig {
     public void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(memberService).passwordEncoder(passwordEncoder());
     }
+
 
 }

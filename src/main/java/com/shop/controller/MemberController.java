@@ -1,4 +1,4 @@
-package com.shop.constant;
+package com.shop.controller;
 
 import com.shop.Service.MemberService;
 import com.shop.dto.MemberFormDto;
@@ -45,4 +45,15 @@ public class MemberController {
         }
         return "redirect:/";
     }
+    @GetMapping(value = "/login")
+    public String loginMember(){
+
+        return "/member/memberLoginForm";
+    }
+    @PostMapping(value = "/login")
+    public String loginError(Model model){
+       model.addAttribute("loginErrorMsg","아이디 또는 비밀번호를 확인해 주세요");
+       return "/member/memberLoginForm";
+    }
+
 }

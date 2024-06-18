@@ -7,12 +7,14 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
 @Entity //db에 저장
 @Table(name="item") //테이블명 item
 @Getter
 @Setter
 @ToString
-public class Item {
+public class Item extends BaseEntity{
     @Id  //PK
     @Column(name="item_id") //칼럼 이름
     @GeneratedValue(strategy = GenerationType.AUTO) //PK auto로 증가
@@ -34,7 +36,12 @@ public class Item {
     @Enumerated(EnumType.STRING) // Enum을 String 으로 변환해서 저장
     private ItemSellStatus itemSellStatus; //상품판매 상태
 
-    private LocalDateTime regTime; //등록시간
+//    private LocalDateTime regTime; //등록시간
 
-    private LocalDateTime updateTime; //수정시간
+//    private LocalDateTime updateTime; //수정시간
+
+    @ManyToMany(fetch = FetchType.LAZY) //다대 다 기능
+    @JoinTable(name = "member_item", joinColumns =@JoinColumn(name = "member_id"),
+    inverseJoinColumns = @JoinColumn(name = "item_id"))
+    private List<Member> members;
 }
