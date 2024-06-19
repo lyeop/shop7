@@ -11,7 +11,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @EntityListeners(value = {AuditingEntityListener.class})
 @MappedSuperclass
 @Getter
-public class BaseEntity extends BaseTimeEntity{ //등록일 수정일은 상속
+public  abstract class BaseEntity extends BaseTimeEntity{ //등록일 수정일은 상속
     @CreatedBy
     @Column(updatable = false)
     private String createdBy;

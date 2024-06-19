@@ -1,4 +1,4 @@
-package com.shop.Service;
+package com.shop.service;
 
 
 import com.shop.entity.Member;
@@ -26,7 +26,7 @@ public class MemberService implements UserDetailsService {
     }
     private void validateDuplicateMember(Member member){
         Member findMember = memberRepository.findByEmail(member.getEmail());
-        Member findMember1 = memberRepository.findByTell(member.getTell());
+        Member findMember1 = memberRepository.findByTel(member.getTel());
         if(findMember!=null || findMember1!=null){
             throw new IllegalStateException("이미 가입된 회원입니다."); //예외 발생
         }

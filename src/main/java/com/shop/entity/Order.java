@@ -27,7 +27,8 @@ public class Order extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
-    @OneToMany(mappedBy = "order",cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.LAZY) //양방향 cascade 부모따라갑니다.
+    @OneToMany(mappedBy = "order",cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.LAZY)
+    //양방향 cascade 부모따라갑니다.
     private List<OrderItem> orderItems = new ArrayList<>();
 
 //    private LocalDateTime regTime;

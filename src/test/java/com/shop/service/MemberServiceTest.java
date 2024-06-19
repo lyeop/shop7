@@ -1,4 +1,4 @@
-package com.shop.Service;
+package com.shop.service;
 
 import com.shop.dto.MemberFormDto;
 import com.shop.entity.Member;

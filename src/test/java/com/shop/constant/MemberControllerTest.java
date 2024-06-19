@@ -1,6 +1,6 @@
 package com.shop.constant;
 
-import com.shop.Service.MemberService;
+import com.shop.service.MemberService;
 import com.shop.dto.MemberFormDto;
 import com.shop.entity.Member;
 import org.junit.jupiter.api.DisplayName;
@@ -15,7 +15,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
 
-import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @AutoConfigureMockMvc //가짜 객체 웹 브라우저에 요청 하는 것처럼 테스트를 할 수 있는 가짜 객체
 @Transactional
@@ -35,7 +34,7 @@ class MemberControllerTest {
         memberFormDto.setEmail(email);
         memberFormDto.setName("홍길동");
         memberFormDto.setAddress("서울시 마포구 합정동");
-        memberFormDto.setTell("010");
+        memberFormDto.setTel("010");
         memberFormDto.setPassword(password);
         Member member= Member.createMember(memberFormDto,passwordEncoder);
         return memberService.saveMember(member);
