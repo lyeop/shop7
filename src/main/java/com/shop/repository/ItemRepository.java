@@ -10,7 +10,7 @@ import java.util.List;
 
 //JpaRepository << 쿼리문 전송
 public interface ItemRepository extends JpaRepository<Item, Long> ,
-        QuerydslPredicateExecutor<Item> {
+        QuerydslPredicateExecutor<Item> , ItemRepositoryCustom{
     // QuerydslPredicateExecutor -> EntityManager 사용대신
     List<Item> findByItemNm(String itemNm);
     //find + entity + By << select *from item where =?(String itemNm)
